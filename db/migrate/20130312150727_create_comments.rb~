@@ -1,0 +1,12 @@
+class CreateComments < ActiveRecord::Migration
+  def change
+    create_table :comments do |t|
+      t.user :user_id
+      t.novel :novel_id
+      t.text :comment
+      t.integer :valutation
+
+      t.timestamps
+    end
+  end
+end

@@ -1,0 +1,45 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b> title:</b>
+  <%= @novel. title %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @novel.author %>
+</p>
+
+<p>
+  <b>Editor:</b>
+  <%= @novel.editor %>
+</p>
+
+<p>
+  <b>Year:</b>
+  <%= @novel.year %>
+</p>
+
+<p>
+  <b>Num pages:</b>
+  <%= @novel.num_pages %>
+</p>
+
+<p>
+  <b>Cover:</b>
+  <%= @novel.cover %>
+</p>
+
+<p>
+  <b>Isbn:</b>
+  <%= @novel.isbn %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @novel.description %>
+</p>
+
+
+<%= link_to 'Edit', edit_novel_path(@novel) %> |
+<%= link_to 'Back', novels_path %>
