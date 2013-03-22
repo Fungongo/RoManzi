@@ -36,6 +36,7 @@
     <%= f.text_field :password %>
   </div>
   <div class="actions">
+    <%= :is_admin => false %>
     <%= f.submit %>
   </div>
 <% end %>

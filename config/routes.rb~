@@ -17,8 +17,6 @@ RoManzi::Application.routes.draw do
   
   root :to => 'novels#index', :as => 'index'
   
-  get "/:page_num", :controller => "novels", :action => "index"
-  
   get "sessions/new"
   post "sessions/create"
   get "sessions/destroy"

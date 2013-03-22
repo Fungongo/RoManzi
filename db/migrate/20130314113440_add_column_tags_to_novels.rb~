@@ -1,0 +1,5 @@
+class AddColumnTagsToNovels < ActiveRecord::Migration
+  def change
+    add_column :novels, :tags
+  end
+end

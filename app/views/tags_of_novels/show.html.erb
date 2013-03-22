@@ -1,0 +1,20 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Novel:</b>
+  <%= @tags_of_novel.novel_id %>
+</p>
+
+<p>
+  <b>Tag:</b>
+  <%= @tags_of_novel.tag_id %>
+</p>
+
+<p>
+  <b>Cont:</b>
+  <%= @tags_of_novel.cont %>
+</p>
+
+
+<%= link_to 'Edit', edit_tags_of_novel_path(@tags_of_novel) %> |
+<%= link_to 'Back', tags_of_novels_path %>

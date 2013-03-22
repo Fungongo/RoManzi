@@ -7,4 +7,4 @@
 </form>
 
 <%= link_to 'Show', @user %> |
-Back <%= link_to_user current_user %>
+Back <%=link_to_user current_user%>

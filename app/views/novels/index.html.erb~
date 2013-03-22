@@ -1,6 +1,6 @@
 <h1>RoManzi</h1>
 <p>
-
+<img src="http://profile.ak.fbcdn.net/hprofile-ak-snc6/623442_1503314767_246712477_q.jpg">
 <% if flash[:notice]%>
 	<%= flash[:notice] %>
 <% end %>
@@ -32,6 +32,7 @@
   <% if novel == nil %>
   <%    break %>
   <% end %>
+  
   <tr>
     <td><img src="#{novel.cover}" alt="aiuto!"></td>
     <td><%= novel.title %></td>
@@ -41,6 +42,7 @@
     <td><%= link_to 'Destroy', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
+<%= <img src="#{novel.cover}"> %>
 </table>
 
 <br>

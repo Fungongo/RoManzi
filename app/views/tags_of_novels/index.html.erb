@@ -1,0 +1,27 @@
+<h1>Listing tags_of_novels</h1>
+
+<table>
+  <tr>
+    <th>Novel</th>
+    <th>Tag</th>
+    <th>Cont</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @tags_of_novels.each do |tags_of_novel| %>
+  <tr>
+    <td><%= tags_of_novel.novel_id %></td>
+    <td><%= tags_of_novel.tag_id %></td>
+    <td><%= tags_of_novel.cont %></td>
+    <td><%= link_to 'Show', tags_of_novel %></td>
+    <td><%= link_to 'Edit', edit_tags_of_novel_path(tags_of_novel) %></td>
+    <td><%= link_to 'Destroy', tags_of_novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Tags of novel', new_tags_of_novel_path %>

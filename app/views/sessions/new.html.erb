@@ -1,0 +1,25 @@
+<h2>Log in!</h2>
+
+<p>
+	<% if flash[:notice] %>
+		<%= flash[:notice] %>
+	<% end %>
+</p>
+<form action="/sessions/create" method="post">
+  <p>
+    <label>
+      <span>Nickname</span>
+      <input type="text" name="nickname" value="<%= params[:nickname] %>" />
+    </label>
+  </p>
+  <p>
+    <label>
+      <span>Password</span>
+      <input type="password" name="password" value="<%= params[:password] %>" />
+    </label>
+  </p>
+
+  <p>
+    <input type="submit" value="Log in!" />
+  </p>
+</form>

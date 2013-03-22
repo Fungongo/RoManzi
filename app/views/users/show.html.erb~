@@ -2,7 +2,7 @@
 
 <p>
   <b> name:</b>
-  <%= @user.name %>
+  <%= @user. name %>
 </p>
 
 <p>

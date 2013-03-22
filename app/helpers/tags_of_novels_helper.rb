@@ -1,0 +1,2 @@
+module TagsOfNovelsHelper
+end
