@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
   has_many :novels
   
   def to_s
-    "@#{nickname}"
+    "#{nickname}"
   end
+  
 end

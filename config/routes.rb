@@ -2,13 +2,9 @@ RoManzi::Application.routes.draw do
 
   resources :tags_of_novels
 
-
   resources :tags
 
-
   resources :comments
-
-  get "/novels/search", :controller => "novels", :action => "index"
 
   resources :novels
 

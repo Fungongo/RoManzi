@@ -1,10 +1,12 @@
 <h1>RoManzi</h1>
 <p>
 <br>
-<form action="search" method="get">
-     <input type="text" name="search" onfocus="this.value=''" value="Search...">
-     <input type="submit" value="Go!" />
-</form>
+<%= form_tag novels_path, :method => 'get' do %>  
+ <p>  
+   <%= text_field_tag :search, params[:search] %>  
+   <%= submit_tag "Search", :name => nil %>  
+ </p>  
+<% end %>  
 <% if flash[:notice]%>
 	<%= flash[:notice] %>
 <% end %>
@@ -16,11 +18,20 @@
     Please <%= link_to "log in", "/sessions/new" %> or 
     <%= link_to "sign in", "/users/new" %>
 <% end %>
+<br>
+<% if @novels.size == 0 %>
+    <br>
+    No results found. Please try again.
+    <br>
+<% end %>
+<br>
 <table border=1px>
   <tr>
     <th></th>
     <th>Title</th>
     <th>Author</th>
+    <th>User</th>
+    <th>Comments</th>
     <th></th>
     <th></th>
   </tr>
@@ -36,13 +47,15 @@
   <%    break %>
   <% end %>
   <tr>
-    <td><a href="<%=novel.cover%>"><img src="<%= novel.cover %>" alt="aiuto!" width="50px" height="75px"></a></td>
+    <td><a href="<%=novel.cover%>"><img src="<%= novel.cover %>" alt="aiuto!" 
+    				width="50px" height="75px"></a></td>
     <td><%= link_to novel.title, novel %></td>
     <td><%= novel.author %></td>
     <% if current_user != nil && (current_user.is_admin == true || current_user.id == novel.user_id)%>
         <td><%= link_to 'Edit', edit_novel_path(novel) %></td>
         <td><%= link_to 'Remove', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
+    <td><%= User.find (novel.user_id).to_s%></td>
   </tr>
 <% end %>
 </table>

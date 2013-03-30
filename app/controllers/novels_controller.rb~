@@ -2,8 +2,8 @@ class NovelsController < ApplicationController
   # GET /novels
   # GET /novels.json
   def index
-    @novels = Novel.all
-
+    @novels = Novel.search(params[:search]).paginate(:page => params[:page], :per_page => 6) 
+   
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @novels }
@@ -83,6 +83,10 @@ class NovelsController < ApplicationController
   
   def search
   	@novels = Novel.where(["title = ?", params[:search]]).to_s
-  	render index
+  	
+  	respond_to do |format|
+      format.html # index.html.erb
+      format.json { render json: @novels }
+    end
   end
 end

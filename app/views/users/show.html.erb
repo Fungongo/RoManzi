@@ -30,6 +30,8 @@
   <%= @user.password %>
 </p>
 
-
-<%= link_to 'Edit', "/users/edit" %> |
+<% if @user == current_user || current_user.is_admin %>
+   <%= link_to 'Edit', "/users/edit" %>
+   | 
+<% end %>
 <%= link_to 'Back', '/' %>

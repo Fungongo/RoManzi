@@ -7,4 +7,13 @@ class Novel < ActiveRecord::Base
   validates :num_pages, :allow_blank => true, :numericality => { :only_integer => true, :greater_than => 0 }
   
   belongs_to :user
+  
+  def self.search(search)
+	  if search  
+	    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])  
+	  else  
+	    find(:all)  
+	  end  
+  end
+  
 end
