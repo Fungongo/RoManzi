@@ -83,10 +83,6 @@ class NovelsController < ApplicationController
   
   def search
   	@novels = Novel.where(["title = ?", params[:search]]).to_s
-  	
-  	respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @novels }
-    end
+  	render index
   end
 end

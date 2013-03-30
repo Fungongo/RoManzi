@@ -1,6 +1,10 @@
 <h1>RoManzi</h1>
 <p>
-
+<br>
+<form action="/novels/search" method="get">
+     <input type="text" name="search" onfocus="this.value=''" value="Search...">
+     <input type="submit" value="Go!" />
+</form>
 <% if flash[:notice]%>
 	<%= flash[:notice] %>
 <% end %>
@@ -19,7 +23,6 @@
     <th>Author</th>
     <th></th>
     <th></th>
-    <th></th>
   </tr>
 
 <% @page_num = params[:page_num] %>
@@ -33,20 +36,22 @@
   <%    break %>
   <% end %>
   <tr>
-    <td><img src="#{novel.cover}" alt="aiuto!"></td>
-    <td><%= novel.title %></td>
+    <td><a href="<%=novel.cover%>"><img src="<%= novel.cover %>" alt="aiuto!" width="50px" height="75px"></a></td>
+    <td><%= link_to novel.title, novel %></td>
     <td><%= novel.author %></td>
-    <td><%= link_to 'Show', novel %></td>
-    <td><%= link_to 'Edit', edit_novel_path(novel) %></td>
-    <td><%= link_to 'Destroy', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% if current_user != nil && (current_user.is_admin == true || current_user.id == novel.user_id)%>
+        <td><%= link_to 'Edit', edit_novel_path(novel) %></td>
+        <td><%= link_to 'Remove', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <% end %>
   </tr>
 <% end %>
 </table>
 
 <br>
 
-<%= link_to 'New Novel', "/novels/new" %>
-
+<% if current_user %>
+    <%= link_to 'New Novel', "/novels/new" %>
+<% end %>
 <br>
 
 <% if(has_previous_page @page_num.to_i) %>

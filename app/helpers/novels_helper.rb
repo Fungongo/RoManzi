@@ -9,12 +9,10 @@ module NovelsHelper
 	end
 	
 	def has_previous_page(page_num)
-		@novel_count = Novel.all.length
-		if @novel_count > page_num * 6
-			return false
+		if page_num != 1
+			return true
 		end
-		
-		return true
+		return false
 	end
 end
 

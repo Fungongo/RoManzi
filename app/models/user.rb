@@ -6,6 +6,8 @@ class User < ActiveRecord::Base
   validates :email, :format => /@/
   validates :password, :presence => true, :confirmation => true, :on => "create"
   
+  has_many :novels
+  
   def to_s
     "@#{nickname}"
   end

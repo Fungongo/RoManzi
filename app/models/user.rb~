@@ -2,11 +2,11 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :birth_date, :email, :nickname, :password, :surname, :is_admin
   
-  validates :name, :presence => true, :length => { :minimum => 3 }
-  validates :surname, :presence => true, :length => { :minimum => 3 }
-  validates :nickname, :presence => true, :length => { :minimum => 3 }
+  validates :name, :surname, :nickname, :presence => true, :length => { :minimum => 3 }
   validates :email, :format => /@/
   validates :password, :presence => true, :confirmation => true, :on => "create"
+  
+  has_many :novel
   
   def to_s
     "@#{nickname}"

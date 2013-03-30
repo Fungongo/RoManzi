@@ -4,5 +4,7 @@ class Novel < ActiveRecord::Base
   validates :title, :author, :description, :presence => true, :length => { :minimum => 3 }
   validates :year, :numericality => { :only_integer => true, :less_than_or_equal_to => Time.now.year,
   										:greater_than => 0 }
-  validates :num_pages, :numericality => { :only_integer => true, :greater_than => 0 }
+  validates :num_pages, :allow_blank => true, :numericality => { :only_integer => true, :greater_than => 0 }
+  
+  belongs_to :user
 end
