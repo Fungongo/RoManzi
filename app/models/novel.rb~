@@ -8,6 +8,8 @@ class Novel < ActiveRecord::Base
   
   belongs_to :user
   
+  has_many :comments
+  
   def self.search(search)
 	  if search  
 	    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])  
@@ -17,7 +19,7 @@ class Novel < ActiveRecord::Base
   end
   
   def get_comments
-  	  @comments = Comment.where(["novel_id = ?", this.id])
+  	  @comments = Comment.where(["novel_id = ?", :id])
   end
   
 end

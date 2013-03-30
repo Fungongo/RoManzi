@@ -41,7 +41,7 @@
 </p>
 
 <% if current_user %>
-   <form id="new_comment" action="/comments/create" method="post">
+   <form id="new_comment" action="/comments/create/<%= @novel.id %>" method="post">
     <p>
       <textarea name="comment[comment]"></textarea>
     <br>
@@ -55,7 +55,7 @@
     	
     </p>
     <p>
-      <input type="submit" value="Write a comment" />
+      <input type="submit" value="Leave comment" />
     </p>
   </form>
 <% end %>

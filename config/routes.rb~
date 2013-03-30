@@ -4,8 +4,9 @@ RoManzi::Application.routes.draw do
 
   resources :tags
  
-  post "comments/create"
+  post "comments/create/:novel_id", :controller => "comments", :action => "create"
   
+  resources :comments
 
   resources :novels
 
