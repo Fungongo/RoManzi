@@ -16,4 +16,8 @@ class Novel < ActiveRecord::Base
 	  end  
   end
   
+  def get_comments
+  	  @comments = Comment.where(["novel_id = ?", :id])
+  end
+  
 end

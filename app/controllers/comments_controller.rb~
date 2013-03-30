@@ -45,7 +45,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       if @comment.save
         flash[:notice] = "Comment created."
-        redirect_to @comment.novel_id
+        redirect_to(:back)
       else
         format.html { render action: "new" }
         format.json { render json: @comment.errors, status: :unprocessable_entity }

@@ -25,6 +25,7 @@
     <br>
 <% end %>
 <br>
+
 <table border=1px>
   <tr>
     <th></th>
@@ -51,11 +52,17 @@
     				width="50px" height="75px"></a></td>
     <td><%= link_to novel.title, novel %></td>
     <td><%= novel.author %></td>
+    <td><%= link_to_user User.find (novel.user_id).to_s %></td>
+    <% size = novel.get_comments.size%>
+    <% if(size == 0) %>
+        <td>-</td>
+    <% else %>
+        <td><%= size %></td>
+    <% end %>
     <% if current_user != nil && (current_user.is_admin == true || current_user.id == novel.user_id)%>
         <td><%= link_to 'Edit', edit_novel_path(novel) %></td>
         <td><%= link_to 'Remove', novel, method: :delete, data: { confirm: 'Are you sure?' } %></td>
     <% end %>
-    <td><%= link_to_user User.find (novel.user_id).to_s %></td>
   </tr>
 <% end %>
 </table>

@@ -10,10 +10,14 @@ class Novel < ActiveRecord::Base
   
   def self.search(search)
 	  if search  
-	    find(:all, :conditions => ['name LIKE ?', "%#{search}%"])  
+	    find(:all, :conditions => ['title LIKE ?', "%#{search}%"])  
 	  else  
 	    find(:all)  
 	  end  
+  end
+  
+  def get_comments
+  	  @comments = Comment.where(["novel_id = ?", this.id])
   end
   
 end
