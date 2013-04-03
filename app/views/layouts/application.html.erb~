@@ -14,8 +14,7 @@
 				
 				<div id="search">
 					<%= form_tag novels_path, :method => 'get' do %>  
-					 	<%= text_field_tag :search, params[:search] %>  
-					 	<%= submit_tag "Search", :name => nil %>  
+					 	<%= text_field_tag :search, params[:search]; submit_tag "Search", :name => nil %>  
 					<% end %>
 				</div>
 				

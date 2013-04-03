@@ -1,24 +1,3 @@
-<h1>RoManzi</h1>
-<p>
-<br>
-<%= form_tag novels_path, :method => 'get' do %>  
- <p>  
-   <%= text_field_tag :search, params[:search] %>  
-   <%= submit_tag "Search", :name => nil %>  
- </p>  
-<% end %>  
-<% if flash[:notice]%>
-	<%= flash[:notice] %>
-<% end %>
-</p>
-<br>
-<% if current_user %>
-    Welcome back <%= link_to_user current_user %> (<%= link_to "logout", "/sessions/destroy" %>)
-  <% else %>
-    Please <%= link_to "log in", "/sessions/new" %> or 
-    <%= link_to "sign in", "/users/new" %>
-<% end %>
-<br>
 <% if @novels.size == 0 %>
     <br>
     No results found. Please try again.
@@ -72,11 +51,11 @@
 <% end %>
 <br>
 
-<% if(has_previous_page @page_num.to_i) %>
+<% if(has_previous_page) %>
 <%=     link_to 'Previous', "/#{@page_num.to_i - 1}" %>
 <% end %>
 
-<% if(has_next_page @page_num.to_i) %>
+<% if(has_next_page) %>
 <%=     link_to 'Next', "/#{@page_num.to_i + 1}" %>
 <% end %>
 

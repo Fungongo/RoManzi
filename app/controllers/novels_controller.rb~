@@ -3,7 +3,8 @@ class NovelsController < ApplicationController
   # GET /novels.json
   def index
     @novels = Novel.search(params[:search])
-   
+    @novels.sort_by{|novel| -novel[:created_at]}
+       
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @novels }
@@ -93,7 +94,7 @@ class NovelsController < ApplicationController
   def novels_from_author
   	@novels = Novel.where(["author = ?", params[:author]])
   	respond_to do |format|
-        format.html # index.html.erb
+        format.html
         format.json { render json: @novels }
      end
   end

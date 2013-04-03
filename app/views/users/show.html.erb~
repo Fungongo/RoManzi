@@ -40,8 +40,6 @@
 		  <th></th>
 		  <th>Title</th>
 		  <th>Author</th>
-		  <th></th>
-		  <th></th>
 		</tr>
 		<% for novel in @novels %>
 			<tr>

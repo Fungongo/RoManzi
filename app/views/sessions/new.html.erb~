@@ -15,7 +15,7 @@
   <p>
     <label>
       <span>Password</span>
-      <input type="password" name="password" value="<%= params[:nickname] %>" />
+      <input type="password" name="password" value="<%= params[:password] %>" />
     </label>
   </p>
 

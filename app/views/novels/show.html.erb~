@@ -69,7 +69,7 @@
   		<td><%= link_to_user comment.user_id %></td>
   		<td><%= time_ago_in_words(comment.created_at) %></td>
   		<% if current_user != nil && (comment.user_id == current_user.id || current_user.is_admin) %>
-   			<%= link_to 'Edit', edit_comment_path(comment) %>
+   			<td><%= link_to 'Edit', edit_comment_path(comment) %></td>
 		<% end %>
   	</tr>
   <% end %>

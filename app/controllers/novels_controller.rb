@@ -3,7 +3,7 @@ class NovelsController < ApplicationController
   # GET /novels.json
   def index
     @novels = Novel.search(params[:search])
-   
+       
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @novels }
