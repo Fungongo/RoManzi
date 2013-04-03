@@ -89,4 +89,12 @@ class NovelsController < ApplicationController
       format.json { render json: @novels }
     end
   end
+  
+  def novels_from_author
+  	@novels = Novel.where(["author = ?", params[:author]])
+  	respond_to do |format|
+        format.html
+        format.json { render json: @novels }
+     end
+  end
 end

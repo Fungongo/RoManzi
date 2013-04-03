@@ -19,7 +19,7 @@ class Novel < ActiveRecord::Base
   end
   
   def get_comments
-  	  @comments = Comment.where(["novel_id = ?", :id])
+  	  return Comment.where(["novel_id = ?", id]).order("created_at desc")
   end
   
 end

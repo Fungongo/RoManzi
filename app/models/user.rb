@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   validates :password, :presence => true, :confirmation => true, :on => "create"
   
   has_many :novels
+  has_many :comments
   
   def to_s
     "#{nickname}"

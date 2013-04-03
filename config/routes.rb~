@@ -5,10 +5,12 @@ RoManzi::Application.routes.draw do
   resources :tags
  
   post "comments/create/:novel_id", :controller => "comments", :action => "create"
-  
+ 
   resources :comments
 
   resources :novels
+  
+  get "novels/:author", :controller => "novels", :action => "novels_from_author"
 
   get "users/edit"
   

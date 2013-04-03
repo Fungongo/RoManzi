@@ -1,0 +1,24 @@
+<h1>Novels from <%= params[:author] %></h1>
+
+<br>
+
+<table border="1px">
+	<tr>
+    <th></th>
+    <th>Title</th>
+    <th>Comments</th>
+  </tr>
+	<% for novel in @novels %>
+		<tr>
+			<td><a href="<%=novel.cover%>"><img src="<%= novel.cover %>" alt="aiuto!" 
+    				width="50px" height="75px"></a></td>
+    	<td><%= link_to novel.title, novel %></td>
+		  <% size = novel.get_comments.size%>
+		  <% if(size == 0) %>
+		      <td>-</td>
+		  <% else %>
+		      <td><%= size %></td>
+		  <% end %>
+		</tr>
+	<% end %>
+</table>

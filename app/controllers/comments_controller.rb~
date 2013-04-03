@@ -35,9 +35,9 @@ class CommentsController < ApplicationController
   # POST /comments
   # POST /comments.json
   def create
-  
-    @comment = current_user.comments.build(params[:comment])
-
+    @comment = Comment.new(params[:comment])
+    @comment.user_id = current_user.id
+    @comment.novel_id = params[:novel_id]
     
     if @comment.save
       flash[:notice] = "Comment created."
@@ -53,15 +53,13 @@ class CommentsController < ApplicationController
   def update
     @comment = Comment.find(params[:id])
 
-    respond_to do |format|
-      if @comment.update_attributes(params[:comment])
-        format.html { redirect_to @comment, notice: 'Comment was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: "edit" }
-        format.json { render json: @comment.errors, status: :unprocessable_entity }
-      end
+    if @comment.update_attributes(params[:comment])
+      flash[:notice] = "Comment updated."
+    else
+      flash[:notice] = "Error while updating the comment. Please retry."
     end
+    
+    redirect_to :back
   end
 
   # DELETE /comments/1

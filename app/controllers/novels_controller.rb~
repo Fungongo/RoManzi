@@ -2,7 +2,7 @@ class NovelsController < ApplicationController
   # GET /novels
   # GET /novels.json
   def index
-    @novels = Novel.search(params[:search]).paginate(:page => params[:page], :per_page => 6) 
+    @novels = Novel.search(params[:search])
    
     respond_to do |format|
       format.html # index.html.erb
@@ -88,5 +88,13 @@ class NovelsController < ApplicationController
       format.html # index.html.erb
       format.json { render json: @novels }
     end
+  end
+  
+  def novels_from_author
+  	@novels = Novel.where(["author = ?", params[:author]])
+  	respond_to do |format|
+        format.html # index.html.erb
+        format.json { render json: @novels }
+     end
   end
 end

@@ -27,7 +27,9 @@
 
 <p>
   <b>Cover:</b>
-  <%= @novel.cover %>
+  <br>
+  <a href="<%= @novel.cover%>"><img src="<%= @novel.cover %>" alt="aiuto!" 
+    				width="100px" height="150px"></a>
 </p>
 
 <p>
@@ -40,7 +42,7 @@
   <%= @novel.description %>
 </p>
 
-<% if current_user != nil %>
+<% if current_user %>
    <form id="new_comment" action="/comments/create/<%= @novel.id %>" method="post">
     <p>
       <textarea name="comment[comment]"></textarea>
@@ -50,7 +52,6 @@
     	<% for i in 1..5 %>
     		<option><%= i %> </option>
     	<% end %>
-    	
     	</select>
     	
     </p>
@@ -62,8 +63,20 @@
 
 <table border=1px>
   <% for comment in @novel.get_comments %>
+  	<tr>
+  		<td><%= comment.valutation %>/5</td>
+  		<td><%= comment.comment %></td>
+  		<td><%= link_to_user comment.user_id %></td>
+  		<td><%= time_ago_in_words(comment.created_at) %></td>
+  		<% if current_user != nil && (comment.user_id == current_user.id || current_user.is_admin) %>
+   			<%= link_to 'Edit', edit_comment_path(comment) %>
+		<% end %>
+  	</tr>
   <% end %>
 </table>
 
-<%= link_to 'Edit', edit_novel_path(@novel) %> |
+<% if current_user != nil && (@novel.user_id == current_user.id || current_user.is_admin) %>
+   <%= link_to 'Edit', edit_novel_path(@novel) %>
+   | 
+<% end %>
 <%= link_to 'Back', novels_path %>

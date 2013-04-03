@@ -33,8 +33,6 @@
     <th>Author</th>
     <th>User</th>
     <th>Comments</th>
-    <th></th>
-    <th></th>
   </tr>
 
 <% @page_num = params[:page_num] %>
@@ -51,8 +49,8 @@
     <td><a href="<%=novel.cover%>"><img src="<%= novel.cover %>" alt="aiuto!" 
     				width="50px" height="75px"></a></td>
     <td><%= link_to novel.title, novel %></td>
-    <td><%= novel.author %></td>
-    <td><%= link_to_user User.find (novel.user_id).to_s %></td>
+    <td><%= link_to_author novel.author %></td>
+    <td><%= link_to_user novel.user_id %></td>
     <% size = novel.get_comments.size%>
     <% if(size == 0) %>
         <td>-</td>
